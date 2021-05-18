@@ -84,7 +84,7 @@
             </div>
             <div class="col-7 px-2 right">
                 <h1 class="mb-5">What's Shinto</h1>
-                <p style="font-size: 36px" class="px-4">
+                <p style="font-size: 24px;margin: 24px" class="px-4">
                     Shinto( 神道 ), 神 it's means God and 道 means way, so Shinto is the way of God. Shinto basicly is not religion it is the about the culture and tradition. Shintoism believe kami, the definition kami is God. Japan people believe that kami is polymorph, it can be a cat, dog, tree, flower, or nature itself. Shinto usually pray at Jinja or we call it Shrine in english. Jinja basically is the home for kami.
                 </p>
             </div>
@@ -95,7 +95,7 @@
         <div class="row">
             <div class="col-7 px-2 left">
                 <h1 class="mb-5">Shinto’s History</h1>
-                <p style="font-size: 36px" class="px-4">
+                <p style="font-size: 24px;margin: 24px" class="px-4">
                     In the late 6th century AD the name Shinto was created for the native religion to distinguish it from Buddhism and Confucianism, which had been introduced from China. Shinto was rapidly overshadowed by Buddhism, and the native gods were generally regarded as manifestations of Buddha in a previous state of existence
                 </p>
             </div>
