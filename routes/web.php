@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DiaryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('welcome');
 Route::view('/about', 'about')->name('about');
+
+Route::prefix('/shinto-diary')->group(function(){
+    Route::get('/', [DiaryController::class, 'index'])->name('diary.index');
+    Route::get('/write-diary', [DiaryController::class, 'create'])->name('diary.create');
+    Route::post('/write-diary', [DiaryController::class, 'store'])->name('diary.store');
+    Route::get('/{diary:slug}', [DiaryController::class, 'show'])->name('diary.show');
+});
