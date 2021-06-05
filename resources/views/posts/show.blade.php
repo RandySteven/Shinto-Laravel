@@ -27,6 +27,12 @@
 @section('content')
 <div class="container">
     <h3>{{ $diary->title }}</h3>
+    <a href="{{ route('diary.edit', $diary) }}" class="btn btn-success">Edit</a>
+    <form action="{{ route('diary.delete', $diary) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
     <p>{!! nl2br($diary->body) !!}</p>
 </div>
 @endsection

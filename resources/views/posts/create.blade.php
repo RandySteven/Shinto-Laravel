@@ -67,10 +67,20 @@
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input type="text" class="form-control" id="title" name="title">
+          @error('title')
+            <div class="alert alert-danger">
+                {{ $message }}
+            </div>
+          @enderror
         </div>
         <div class="mb-3">
           <label for="body" class="form-label">Body</label>
           <textarea name="body" id="body" rows="10" class="form-control"></textarea>
+          @error('body')
+            <div class="alert alert-danger">
+                {{ $message }}
+            </div>
+          @enderror
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

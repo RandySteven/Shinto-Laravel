@@ -66,12 +66,18 @@
                         {{-- <img src="assets/images/245046 1.png" height="160" class="card-img-top" alt="..."> --}}
                         <div class="card-body">
                             <h5 class="card-title">{{ $diary->title }}</h5>
+                            <p class="text-secondary">
+                                {{ $diary->created_at->diffForHumans() }}
+                            </p>
                             <p class="card-text">{{ Str::limit($diary->body, 50, '.') }}</p>
                             <a href="{{ route('diary.show', $diary) }}" class="btn btn-danger">Read More</a>
                         </div>
                     </div>
                 </div>
             @endforeach
+            <div class="container">
+                {{ $diaries->links() }}
+            </div>
       </div>
   </div>
 @endsection
