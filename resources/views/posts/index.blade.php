@@ -48,7 +48,9 @@
 
                             <p class="text-secondary">
                                 {{ $diary->created_at->diffForHumans() }} <br>
-                                {{ $diary->user->name }}
+                                <a href="{{ route('user.show', $diary->user) }}">
+                                    {{ $diary->user->name }}
+                                </a>
                             </p>
                             <p class="card-text">{{ Str::limit($diary->body, 50, '.') }}</p>
                             <a href="{{ route('diary.show', $diary) }}" class="btn btn-danger">Read More</a>

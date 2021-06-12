@@ -27,7 +27,9 @@
 @section('content')
 <div class="container">
     <h3>{{ $diary->title }}</h3>
-    <p>Writed by {{ $diary->user->name }}</p>
+    <p>Writed by <a href="{{ route('user.show', $diary->user) }}">
+        {{ $diary->user->name }}
+    </a></p>
     <p>
         @foreach ($diary->tags as $tag)
             <a href="{{ route('tag', $tag) }}">{{ $tag->tag }}</a> ,

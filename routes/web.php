@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DiaryController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,4 @@ Route::prefix('/shinto-diary')->group(function(){
 });
 
 Route::get('/tag/{tag:slug}', [TagController::class, 'index'])->name('tag');
+Route::get('/user/{user:name}', [UserController::class, 'show'])->name('user.show');
