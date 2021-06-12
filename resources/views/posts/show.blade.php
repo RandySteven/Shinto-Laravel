@@ -9,7 +9,7 @@
        font-family: 'Kaushan Script';font-size: 22px;
    }
    .jumbotron{
-       background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("assets/images/245046\ 1.png");
+       background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/assets/images/245046\ 1.png");
        background-position: center;
        background-size: cover;
        background-repeat: no-repeat;
@@ -27,6 +27,12 @@
 @section('content')
 <div class="container">
     <h3>{{ $diary->title }}</h3>
+    <p>Writed by {{ $diary->user->name }}</p>
+    <p>
+        @foreach ($diary->tags as $tag)
+            <a href="{{ route('tag', $tag) }}">{{ $tag->tag }}</a> ,
+        @endforeach
+    </p>
     <a href="{{ route('diary.edit', $diary) }}" class="btn btn-success">Edit</a>
     <form action="{{ route('diary.delete', $diary) }}" method="POST">
         @csrf

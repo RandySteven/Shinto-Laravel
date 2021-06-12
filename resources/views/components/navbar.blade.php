@@ -7,16 +7,13 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Home</a>
+            <a class="nav-link" aria-current="page" href="{{ route('welcome') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Shinto Diary</a>
+            <a class="nav-link" href="{{ route('diary.index') }}">Shinto Diary</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link" href="{{ route('diary.create') }}">Write Diary</a>
           </li>
         </ul>
       </div>

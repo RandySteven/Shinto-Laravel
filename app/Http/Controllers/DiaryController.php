@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Diary;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class DiaryController extends Controller
 {
     public function create(){
-        return view('posts.create');
+        $tags = Tag::get();
+        return view('posts.create', compact('tags'));
     }
 
     public function store(Request $request){
@@ -23,12 +25,14 @@ class DiaryController extends Controller
         // ]);
         $attr = $request->all();
         $attr['slug'] = \Str::slug($request->title);
-        Diary::create($attr);
+        $attr['user_id'] = $request->get('user_id');
+        $diary = Diary::create($attr);
+        $diary->tags()->attach($request->get('tags'));
         return redirect('shinto-diary')->with('success', 'Create Success');
     }
 
     public function index(){
-        $diaries = Diary::latest()->paginate(1);
+        $diaries = Diary::latest()->paginate(3);
         return view('posts.index', ['diaries'=>$diaries]);
     }
 

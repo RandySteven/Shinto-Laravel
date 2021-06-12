@@ -27,35 +27,7 @@
 @section('content')
 <div class="jumbotron">
 
-    <nav class="navbar navbar-expand-lg mt-0">
-      <div class="container-fluid">
-        <a class="navbar-brand text-red" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-red" href="create.html">Create</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link text-red dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+
 
     <h1 class="text-center py-xl-5"><span class="text-red h1">Shinto</span> <span class="text-white h1">Diary</span></h1>
   </div>
@@ -64,6 +36,7 @@
     <form method="POST" action="{{ route('diary.store') }}">
         @csrf
         {{-- Cross-Site Request Forgery --}}
+        <input type="hidden" name="user_id" value="1">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input type="text" class="form-control" id="title" name="title">
@@ -72,6 +45,14 @@
                 {{ $message }}
             </div>
           @enderror
+        </div>
+        <div class="mb-3">
+            <label for="tags" class="form-label">Tag</label>
+            <select name="tags[]" id="tags" class="form-control js-example-basic-multiple-limit" multiple>
+                @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
           <label for="body" class="form-label">Body</label>

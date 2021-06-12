@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DiaryController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,5 @@ Route::prefix('/shinto-diary')->group(function(){
     Route::put('/update/{diary:slug}', [DiaryController::class, 'update'])->name('diary.update');
     Route::delete('/delete/{diary:slug}', [DiaryController::class, 'delete'])->name('diary.delete');
 });
+
+Route::get('/tag/{tag:slug}', [TagController::class, 'index'])->name('tag');
