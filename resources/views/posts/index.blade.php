@@ -35,7 +35,7 @@
             @foreach ($diaries as $diary)
                 <div class="col">
                     <div class="card" style="width: 12rem;">
-                        {{-- <img src="assets/images/245046 1.png" height="160" class="card-img-top" alt="..."> --}}
+                        <img src="{{ asset('storage/'.$diary->thumbnail) }}" height="160" class="card-img-top" alt="...">
                         <div class="card-body">
 
                             <h5 class="card-title">{{ $diary->title }}</h5>

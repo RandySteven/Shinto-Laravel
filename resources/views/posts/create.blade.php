@@ -33,7 +33,7 @@
   </div>
 
   <div class="container mt-5">
-    <form method="POST" action="{{ route('diary.store') }}">
+    <form method="POST" action="{{ route('diary.store') }}" enctype="multipart/form-data">
         @csrf
         {{-- Cross-Site Request Forgery --}}
         <input type="hidden" name="user_id" value="1">
@@ -45,6 +45,10 @@
                 {{ $message }}
             </div>
           @enderror
+        </div>
+        <div class="mb-3">
+            <label for="thumbnail" class="form-label">Thumbnail</label>
+            <input type="file" class="form-control" id="thumbnail" name="thumbnail">
         </div>
         <div class="mb-3">
             <label for="tags" class="form-label">Tag</label>

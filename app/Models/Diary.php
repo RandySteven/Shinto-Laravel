@@ -12,7 +12,7 @@ class Diary extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'body', 'slug', 'user_id'
+        'title', 'body', 'slug', 'user_id', 'thumbnail'
     ];
 
     /**

@@ -32,7 +32,7 @@
   </div>
 
   <div class="container mt-5">
-    <form method="POST" action="{{ route('diary.update', $diary) }}">
+    <form method="POST" action="{{ route('diary.update', $diary) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         {{-- Cross-Site Request Forgery --}}
@@ -40,6 +40,12 @@
           <label for="title" class="form-label">Title</label>
           <input type="text" class="form-control" id="title" name="title" value="{{ $diary->title }}">
         </div>
+        <div class="mb-3">
+            <label for="thumbnail" class="form-label">Thumbnail</label>
+            <input type="file" class="form-control" id="thumbnail" name="thumbnail">
+        </div>
+        <input type="hidden" name="user_id" value="1">
+
         <div class="mb-3">
           <label for="body" class="form-label">Body</label>
           <textarea name="body" id="body" rows="10" class="form-control">

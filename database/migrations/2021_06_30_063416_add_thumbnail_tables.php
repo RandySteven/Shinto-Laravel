@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserIdTable extends Migration
+class AddThumbnailTables extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddUserIdTable extends Migration
     public function up()
     {
         Schema::table('diaries', function (Blueprint $table) {
-            $table->foreignId('user_id')->after('slug')->constrained('users')->onDelete('cascade')->nullable();
+            $table->string('thumbnail')->after('body')->nullable();
         });
     }
 
