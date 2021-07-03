@@ -31,7 +31,8 @@
   </div>
 
   <div class="container">
-      <div class="row row-cols-4 mx-2 mt-5">
+    <a href="{{ route('diary.create') }}">Create Diary</a>
+    <div class="row row-cols-4 mx-2 mt-5">
             @foreach ($diaries as $diary)
                 <div class="col">
                     <div class="card" style="width: 12rem;">

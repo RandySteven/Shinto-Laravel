@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendShipped;
 use App\Models\Diary;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class DiaryController extends Controller
@@ -27,7 +29,7 @@ class DiaryController extends Controller
         // ]);
         $attr = $request->all();
         $attr['slug'] = \Str::slug($request->title);
-        $attr['user_id'] = $request->get('user_id');
+        $attr['user_id'] = auth()->user()->id;
         $attr['thumbnail'] = $request->file('thumbnail')->store("images/");
         $diary = Diary::create($attr);
         $diary->tags()->attach($request->get('tags'));
@@ -77,5 +79,10 @@ class DiaryController extends Controller
             Storage::delete($diary->thumbnail);
         }
         return redirect('shinto-diary');
+    }
+
+    public function sendDiary(Diary $diary, Request $request){
+        Mail::to($request->email)->queue(new SendShipped($diary));
+        return back();
     }
 }

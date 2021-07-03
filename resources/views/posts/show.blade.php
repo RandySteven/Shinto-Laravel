@@ -35,12 +35,23 @@
             <a href="{{ route('tag', $tag) }}">{{ $tag->tag }}</a> ,
         @endforeach
     </p>
-    <a href="{{ route('diary.edit', $diary) }}" class="btn btn-success">Edit</a>
-    <form action="{{ route('diary.delete', $diary) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Delete</button>
-    </form>
+
+    @auth
+        @if (Auth::user()->id == $diary->user_id)
+            {{-- button --}}
+            <a href="{{ route('diary.edit', $diary) }}" class="btn btn-success">Edit</a>
+            <form action="{{ route('diary.delete', $diary) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        @endif
+        <form action="{{ route('send.diary', $diary) }}" method="POST">
+            @csrf
+            <input type="text" name="email" id="">
+            <button type="submit">share</button>
+        </form>
+    @endauth
     <p>{!! nl2br($diary->body) !!}</p>
 </div>
 @endsection
