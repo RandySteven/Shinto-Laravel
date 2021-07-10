@@ -34,7 +34,7 @@
 
   <div class="container mt-5">
     <form method="POST" action="{{ route('diary.store') }}" enctype="multipart/form-data">
-        @csrf
+        {{-- @csrf --}}
         {{-- Cross-Site Request Forgery --}}
         <input type="hidden" name="user_id" value="1">
         <div class="mb-3">
